@@ -1,7 +1,6 @@
 require 'rails_helper'
-require 'rails_helper'
 
-describe Movie, type: :model do
+describe Genre, type: :model do
   describe "instance method " do
     it 'can calculate average rating for all movies' do
       genre = Genre.create(name: 'scifi')
@@ -13,6 +12,9 @@ describe Movie, type: :model do
       average_rating = (movie.rating + movie1.rating + movie2.rating) / 3
 
       expect(genre.average_rating_for_all_movies).to eq(average_rating)
+    end
+    describe "relationships" do
+      it {should have_many(:movies).through(:genre_movies)}
     end
   end
 end
