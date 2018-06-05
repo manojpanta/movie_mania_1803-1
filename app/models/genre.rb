@@ -5,4 +5,8 @@ class Genre < ApplicationRecord
   def average_rating_for_all_movies
     movies.average(:rating).to_i
   end
+
+  # def movie_with_highest_rating
+  #   movies.where(rating: maximum(:rating)).first
+  # end
 end
