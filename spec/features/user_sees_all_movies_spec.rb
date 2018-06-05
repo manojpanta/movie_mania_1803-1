@@ -3,6 +3,8 @@ require 'rails_helper'
 describe 'user_index' do
   it 'user_can_see_all_movies' do
     director = Director.create(name: "Alec Baldwin")
+    genre = Genre.create(name: 'scifi')
+
     movie_1 = director.movies.create(title: "Mean Girls", description: "High school girls are mean.")
     movie_2 = Movie.create!(title: "Boss Baby", description: "A baby is a boss.", director_id: director.id)
     movie_3 = Movie.create(title: "Catch Me If You Can", description: "Boy becomes expert in check fraud", director: director)

@@ -24,14 +24,15 @@ describe " visitor visits genre index index page" do
     end
 
     it "i see movies for genre in genre show page" do
+      director = Director.create(name: 'manoj')
       genre = Genre.create(name: 'scifi')
-      genre1 = Genre.create(name: 'genre')
+      movie = genre.movies.create(title: 'movie1', description: 'this is move', director: director)
+      movie1 = genre.movies.create(title: 'movie2', description: 'this is move2', director: director)
 
-      visit genres_path
+      visit genre_path(genre)
 
-      click_on genre.name
-
-      expect(current_path).to eq(genre_path(genre))
+      expect(page).to have_content(movie.title)
+      expect(page).to have_content(movie1.title)
     end
   end
 end

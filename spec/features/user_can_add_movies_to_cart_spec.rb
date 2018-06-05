@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'add movie to cart' do
   before(:each) do
     director = Director.create!(name: 'Someone!')
+    genre = Genre.create(name: 'scifi')
     @movie1 = director.movies.create!(title: 'Shawshank Redemption', description: 'Tim Robbins in jail')
     @movie2 = director.movies.create!(title: 'Mary Poppins', description: 'Tim Robbins in jail')
     @button_label = 'Add this movie to cart'
