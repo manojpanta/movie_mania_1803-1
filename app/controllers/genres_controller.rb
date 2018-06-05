@@ -13,5 +13,6 @@ class GenresController < ApplicationController
   def show
     @genre = Genre.find(params[:id])
     @movies = @genre.movies
+    @average = @genre.average_rating_for_all_movies
   end
 end

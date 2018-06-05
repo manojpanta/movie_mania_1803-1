@@ -1,9 +1,8 @@
 require 'rails_helper'
-require 'rails_helper'
 
-describe Movie, type: :model do
-  describe "instance method " do
-    it 'can calculate average rating for all movies' do
+describe "visitor visiting genre show page" do
+  context "as visitor" do
+    it "should see average rating for all movies" do
       genre = Genre.create(name: 'scifi')
       director = Director.create(name: 'manoj')
       movie = genre.movies.create(title: 'move', description: 'this is move', director: director, rating: 4)
@@ -12,7 +11,9 @@ describe Movie, type: :model do
 
       average_rating = (movie.rating + movie1.rating + movie2.rating) / 3
 
-      expect(genre.average_rating_for_all_movies).to eq(average_rating)
+      visit genre_path(genre)
+      expect(page).to have_content("Average Rating For All Movies: #{average_rating}")
+
     end
   end
 end
