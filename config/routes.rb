@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   resources :users, only: [:new, :show, :index, :create]
-  resources :movies, only: [:index]
+  resources :movies, param: :slug
 
   resources :directors, shallow: true do
     resources :movies, param: :slug

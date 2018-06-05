@@ -4,3 +4,10 @@
 <p><%= @movie.description %></p>
 
 <p>Directed by: <%= @movie.director.name %></p>
+
+<h1>Genres For This Movie:</h1>
+<ul>
+  <%@genres.each do |g|%>
+  <%=g.name%>
+  <%end%>
+</ul>
