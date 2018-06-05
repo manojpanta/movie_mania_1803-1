@@ -15,5 +15,15 @@ describe " visitor visits movie show page" do
       expect(page).to have_content(genre.name)
       expect(page).to have_content(genre1.name)
     end
+    it "shows rating for this movie" do
+      director = Director.create!(name: 'manoj')
+      genre = Genre.create!(name: 'scifi')
+      movie = genre.movies.create(title: 'move', description: 'this is move', director: director, rating: 5)
+
+
+      visit movie_path(movie.slug)
+
+      expect(page).to have_content("Rating: 5")
+    end
   end
 end

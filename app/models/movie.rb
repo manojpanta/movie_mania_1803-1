@@ -1,4 +1,5 @@
 class Movie < ApplicationRecord
+  validates :rating, presence: true, numericality: { greater_than: -1, less_than: 6}
   belongs_to :director
   has_many :actor_movies
   has_many :actors, through: :actor_movies
