@@ -9,4 +9,8 @@ class GenresController < ApplicationController
     @genre = Genre.create(params[:name])
     redirect_to genres_path
   end
+
+  def show
+    @genre = Genre.find(params[:id])
+  end
 end

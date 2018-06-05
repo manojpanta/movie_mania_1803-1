@@ -1,6 +1,7 @@
 <% @genres.each do |g| %>
-<%= g.name%>
+<%= link_to g.name, genre_path(g)%>
 <%end%>
+
 <h1>Create New Genre</h1>
 <%= form_for @genre do |f| %>
   <%= f.label :name%>
