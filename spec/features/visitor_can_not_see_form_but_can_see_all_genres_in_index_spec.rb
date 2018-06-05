@@ -22,5 +22,16 @@ describe " visitor visits genre index index page" do
 
       expect(current_path).to eq(genre_path(genre))
     end
+
+    it "i see movies for genre in genre show page" do
+      genre = Genre.create(name: 'scifi')
+      genre1 = Genre.create(name: 'genre')
+
+      visit genres_path
+
+      click_on genre.name
+
+      expect(current_path).to eq(genre_path(genre))
+    end
   end
 end
