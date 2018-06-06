@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   resources :users, only: [:new, :show, :index, :create]
-  resources :movies, param: :slug
+  resources :movies, only: [:index]
 
   resources :directors, shallow: true do
     resources :movies, param: :slug
@@ -16,8 +16,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :categories, only: [:index]
+    resources :genres, only: [:create]
   end
 
   resources :carts, only: [:create]
-  resources :genres
+  resources :genres, only:[:index, :show]
 end

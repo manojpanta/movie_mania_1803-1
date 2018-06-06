@@ -6,7 +6,8 @@ class Genre < ApplicationRecord
     movies.average(:rating).to_i
   end
 
-  # def movie_with_highest_rating
-  #   movies.where(rating: maximum(:rating)).first
-  # end
+
+  def movie_with_highest_rating
+    movies.order('rating DESC').first
+  end
 end

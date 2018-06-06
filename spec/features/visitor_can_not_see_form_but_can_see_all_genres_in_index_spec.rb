@@ -6,6 +6,7 @@ describe " visitor visits genre index index page" do
       genre = Genre.create(name: 'scifi')
       genre1 = Genre.create(name: 'genre')
 
+
       visit genres_path
 
       expect(page).to have_content(genre.name)
@@ -13,8 +14,9 @@ describe " visitor visits genre index index page" do
     end
 
     it "allows visitor to click on genre name to go to show page " do
+      director = Director.create(name: 'manoj')
       genre = Genre.create(name: 'scifi')
-      genre1 = Genre.create(name: 'genre')
+      movie = genre.movies.create(title: 'movie1', description: 'this is move', director: director)
 
       visit genres_path
 
